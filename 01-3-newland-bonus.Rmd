@@ -1,0 +1,20 @@
+
+
+## Bonus
+
+Before moving on with the <txt-green>sampling design</txt-green>, here is a dynamic view of ```r newland_name``` and the first 10 forest inventory plots.
+
+```{r tmap1, echo=F, fig.cap="Land cover and first inventory plot location."}
+
+if (book_format == "html") tmap_mode("view") else tmap_mode("plot")
+
+tm_shape(sf_lc) + tm_polygons(col = "lc", 
+                              palette = pal, 
+                              popup.vars = c("lc", "id"), border.alpha = 0) +
+tm_shape(sf_fi) + tm_dots(col = "plot_agb", 
+                          size = 0.1)
+
+```
+
+
+<!-- End of intro to Newland -->

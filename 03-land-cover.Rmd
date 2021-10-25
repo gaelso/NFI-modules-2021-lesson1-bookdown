@@ -1,0 +1,57 @@
+
+
+## land cover types and areas
+
+We can use the land cover shapefile provided to us to view the different land covers and calculate the area of the forest. The shapefile is loaded in the environment under the name `sf_lc` with the package `sf`. It contains both the attribute table, the geometries and the coordinate reference system of ```r newland_name```'s land cover. Running the object name in the console displays its summary information.
+
+```{r sf_newland}
+
+sf_lc
+
+```
+
+This summary information regroups the Coordinate Reference System (CRS), the type of geometry (polygon), the number of polygons (features) and fields and the detailed information on the first 10 polygons.
+
+The four fields represent the polygon ID (`id`) and the land cover IDs (`lc_id`), codes (`lc`) and names (`lc_name`). To isolate the list of different land covers we can use the `distinct()` function on the data table.
+
+```{r lc-info}
+
+sf_lc %>%
+  as_tibble() %>%
+  select(lc_id, lc, lc_name) %>%
+  distinct() %>%
+  arrange(lc_id)
+
+
+```
+
+\  
+
+::::::{.infobox data-latex=""}
+
+**Let's set a few naming conventions.**
+
+All forest inventory related tables are stored in object with names related to what they contain. for example the NFI plot and tree data are stored in tables `plot` and `tree`. 
+
+Using `plot` for a table is not very good practice in R as `plot()` is the base R function for plotting data. But we keep it nonetheless, forest plot level data is a crucial NFI level. The NFI tables in this tutorial are: `plot`, `tree` and `species_list`. 
+
+The prefix `exfi_` was added for the data from the first exploration crew forest inventory.
+
+Similarly all spatial data are handled mostly with the `sf` package, and the prefix `sf_` was used as a naming convention. The spatial objects available for this tutorial are: `sf_admin`, `sf_lc` and `sf_topo`, respectively the administrative boundaries, land cover, topography of ```r newland_name```.
+
+::::::
+
+\  
+
+`sf` objects behave similarly to standard data frames, making it easy to apply `tidyverse` functions while keeping the spatial information or to convert them to data data frames with `as_tibble()`. The `sf` package also contains the `st_area()` function that we are going to use to calculate the overall area of the land covers.
+
+```{r get-area}
+area_lc <- sf_lc %>%
+  mutate(area_ha = st_area(.) %>% units::set_units(value = ha)) %>%
+  as_tibble() %>% 
+  group_by(lc) %>%
+  summarise(area_ha = sum(area_ha))
+
+area_lc
+```
+

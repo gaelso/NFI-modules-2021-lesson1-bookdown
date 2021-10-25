@@ -1,0 +1,25 @@
+
+\newpage
+
+# Introduction {-}
+
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
+
+<txt-green>Welcome to the first lesson</txt-green> of the NFI technical module 9: Practice.
+
+This interactive module is designed to complement the NFI training modules [LINK] with practical hands-on exercises on a fictional island that just emerged in the middle of the Atlantic Ocean: `Louland`. Although this land is not an official country, we will use the acronym NFI when referring to its forest inventory as the method and formulas applied here are valid for nationwide forest inventories.
+
+In this first lesson: "Overview of the preliminary data", we will discover the land cover of `Louland` and we will recalculate the average Aboveground Biomass (AGB) of a small inventory carried out by the first exploration crew in one forest stand. 
+
+The objectives of this lesson are:
+
+- familiarize yourself with how the interactive lessons of the NFI technical module 9 work,
+- familiarize yourself with `Louland`, our fictional land to practice national Forest Inventory sampling design and data analysis,
+- Calculate an average AGB estimate for one forest stand,
+- Calculate the area of different land covers, based on shapefile spatial data.
+
+
+<txt-green>Let's get started!</txt-green>
+
+
+

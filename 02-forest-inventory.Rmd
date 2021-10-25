@@ -1,0 +1,84 @@
+
+
+## Results of a small scale forest inventory
+
+First, let's have a look at the results of 10 forest plots measured by the exploration crew. The data is stored in the object `fi_agb`. By running the object name in the console we will see the results:
+
+```{r fi-demo}
+
+fi_agb
+
+```
+
+*ADD variable description*
+
+\  
+
+The 10 plots come from a random sample in one of the Evergreen Forest of ```r newland_name```. The crew also shared the plot level aboveground biomass in the table name `fi_pagb`. 
+
+**Your turn! Run the table `fi_pagb` in the console below to see the table basic information.**
+
+```{r fi-cons, eval=F, class.source="Rchunk-cons"}
+
+## Console
+##
+
+```
+
+
+```{r fi-sol, class.source="Rchunk-sol", class.output="Rout-sol"}
+
+fi_pagb
+
+```
+
+
+*ADD variable description*
+
+\  
+
+Given that the crew chose the plot location randomly, we can use simple aggregating functions to re-calculate the forest mean aboveground biomass and confirm their calculation. We will use a mix of base R and `tidyverse` functions, in particular `summarise()`. This function is very handy to aggregate numerical variables in different columns of our plot table and can even be used in combination to `group_by()` to summarize numerical variables based on category variables of the same table (more on that later, with the full NFI data). 
+
+Let's see for example how to calculate the mean basal area of the forest with its standard deviation, and save the results in a table `exfi_ba`. After creating the table, we run the table name in the console to display its content.
+
+```{r fi-ba}
+
+exfi_ba <- fi_pagb %>%
+  summarise(
+    mean_ba = mean(plot_ba),
+    sd_ba   = sd(plot_ba)
+  )
+
+exfi_ba
+
+```
+
+\  
+
+**Your turn! Create a table `exfi_agb` with the columns `mean_agb` and `sd_agb` and display the results.**
+
+```{r fi-agb-cons, eval=F, class.source="Rchunk-cons"}
+
+## Console
+exfi_agb <- fi_pagb %>%
+  summarise(
+    mean_agb = mean(___),
+    sd_agb   = sd(___)
+  )
+
+exfi_agb
+
+```
+
+```{r fi-agb-sol, class.source="Rchunk-sol", class.output="Rout-sol"}
+
+exfi_agb <- fi_pagb %>%
+  summarise(
+    mean_agb = mean(plot_agb),
+    sd_agb   = sd(plot_agb)
+  )
+
+exfi_agb
+
+```
+
