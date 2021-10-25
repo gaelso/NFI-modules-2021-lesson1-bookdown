@@ -3,6 +3,7 @@
 
 _bookdown_files/
 data/
+!docs/data/
 fonts/
 Handbook/
 results/
