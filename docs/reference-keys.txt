@@ -5,4 +5,3 @@ recalculate-the-mean-agb
 land-cover-types-and-areas
 spatial-objects
 land-cover-areas
-bonus
