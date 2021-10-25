@@ -97,7 +97,7 @@ Authors, Interactive training modules on National Forest Inventory data analysis
 \ 
 
 *ADD Photo credit*
-Example: Lauri Vesa (cover photo, photo \@ref(fig:data-cleaning))
+
 
 
 
