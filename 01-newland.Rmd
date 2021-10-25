@@ -23,7 +23,7 @@ pal       <- palette1
 
 In a future version of this interactive training module, you will be able to choose different land profiles with different (1) forest categories, (2) ratio of ocean covering the 90 x 90 km square frame in which the new land is created, (3) inclusion or not of mangrove forests and even (4) the maximum altitude of ```r newland_name``` (it will have an impact on inaccessible plots)!
 
-For now, ```r newland_name``` forests are divided into ```r nb_ft``` categories: Evergreen forest, Mixed-Deciduous forest, Deciduous forest, Open Woodland, Other Non-forest land plus Mangrove Forest and all the island is considered accessible.
+For now, ```r newland_name``` forests are divided into ```r nb_ft``` categories: Evergreen forest, Mixed-Deciduous forest, Deciduous forest, Other Woodland, Other Non-forest land plus Mangrove Forest and all the island is considered accessible.
 
 ::::::
 
