@@ -1,22 +1,42 @@
 
 
-## Results of a small scale forest inventory
+# Results of a small scale preliminary forest inventory
 
-First, let's have a look at the results of 10 forest plots measured by the exploration crew. The data is stored in the object `fi_agb`. By running the object name in the console we will see the results:
+## Overview
+
+First, let's have a look at the results of 10 forest plots measured by the exploration crew. The data is stored in the object `exfi_agb`. By running the object name in the console we will see the results:
 
 ```{r fi-demo}
 
-fi_agb
+exfi_agb
 
 ```
 
-*ADD variable description*
+::::::{.infobox data-latex=""}
+
+Since we are using functions form the `tidyverse` collection of R packages, data tables in these interactive lessons are `tibbles`. They are simple rectangular tables (Each column has the same number of rows) plus when running their names in the console, we get the number of rows and columns, the column names with the type of data and the first 1 0values for each column.
+
+::::::
+
+The table (or tibble) `exfi_agb` contains the number of plots `n_plot`, the mean and standard deviation for aboveground biomass and basal area: `mean_agb` and  `sd_agb` in ton/ha, `mean_ba` and `sd_ba` in m^2^/ha. `ci` and `ci_perc` represent the confidence interval around the mean AGB in ton/ha and percentage of the mean respectively.
+
 
 \  
 
-The 10 plots come from a random sample in one of the Evergreen Forest of ```r newland_name```. The crew also shared the plot level aboveground biomass in the table name `fi_pagb`. 
+The 10 plots come from a random sample in one of the Evergreen Forest of ```r newland_name```. The crew also shared the plot level aboveground biomass in the table name `exfi_pagb`. 
 
-**Your turn! Run the table `fi_pagb` in the console below to see the table basic information.**
+**Your turn! Run the table `exfi_pagb` in the console below to see the table basic information.**
+
+::::::{.infobox data-latex=""}
+
+Whenever you see "**Your turn!**", followed by a small console windows, these are actual R consoles. You can run R code in these consoles and you will be presented with either pre-filled code sequences with holes for you to complete or an empty console.
+
+Follow the instructions and try to complete or create the code necessary to get the table, value or figure requested. The lesson continue after the exercise is completed and the correct code submitted.
+
+The interactive lessons are designed on a try and error model. The code is first showcased then pre-filled code with holes for you to complete in order to become familiar with the commands. Finally after a few practice exercises the last console for a group of commands will be empty.
+
+::::::
+
 
 ```{r fi-cons, eval=F, class.source="Rchunk-cons"}
 
@@ -28,14 +48,15 @@ The 10 plots come from a random sample in one of the Evergreen Forest of ```r ne
 
 ```{r fi-sol, class.source="Rchunk-sol", class.output="Rout-sol"}
 
-fi_pagb
+exfi_pagb
 
 ```
 
-
-*ADD variable description*
+The table `exfi_pagb` contains for each plot, its ID `plot_id`, number of trees per hectare `count_tree`, basal area `plot_ba` in m^2^/ha and aboveground biomass `plot_agb` in ton/ha.
 
 \  
+
+## Recalculate the mean AGB
 
 Given that the crew chose the plot location randomly, we can use simple aggregating functions to re-calculate the forest mean aboveground biomass and confirm their calculation. We will use a mix of base R and `tidyverse` functions, in particular `summarise()`. This function is very handy to aggregate numerical variables in different columns of our plot table and can even be used in combination to `group_by()` to summarize numerical variables based on category variables of the same table (more on that later, with the full NFI data). 
 
@@ -43,7 +64,7 @@ Let's see for example how to calculate the mean basal area of the forest with it
 
 ```{r fi-ba}
 
-exfi_ba <- fi_pagb %>%
+exfi_ba <- exfi_pagb %>%
   summarise(
     mean_ba = mean(plot_ba),
     sd_ba   = sd(plot_ba)
@@ -55,30 +76,40 @@ exfi_ba
 
 \  
 
-**Your turn! Create a table `exfi_agb` with the columns `mean_agb` and `sd_agb` and display the results.**
+**Your turn! Create a table `exfi_agb2` wiath the columns `mean_agb` nd `sd_agb` and display the results.**
 
 ```{r fi-agb-cons, eval=F, class.source="Rchunk-cons"}
 
 ## Console
-exfi_agb <- fi_pagb %>%
+exfi_agb2 <- exfi_pagb %>%
   summarise(
     mean_agb = mean(___),
     sd_agb   = sd(___)
   )
 
-exfi_agb
+exfi_agb2
 
 ```
 
 ```{r fi-agb-sol, class.source="Rchunk-sol", class.output="Rout-sol"}
 
-exfi_agb <- fi_pagb %>%
+exfi_agb2 <- exfi_pagb %>%
   summarise(
     mean_agb = mean(plot_agb),
     sd_agb   = sd(plot_agb)
   )
 
-exfi_agb
+exfi_agb2
 
 ```
+
+
+We have successfully found back the same values for AGB: ```r round(exfi_agb$mean_agb, 2)``` ton/ha on average with a standard deviation of ```r round(exfi_agb$sd_agb, 2)```.
+
+In the next section we will have an overview of the spatial data on ```r newland_name```' land cover classes.
+
+\  
+
+
+
 

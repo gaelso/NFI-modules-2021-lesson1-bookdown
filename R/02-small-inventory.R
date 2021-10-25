@@ -15,7 +15,7 @@ plot_select <- sample(1:length(plot_init), 10)
 
 plot_select <- plot_init[plot_select]
 
-plot_fi <- plot %>% filter(plot_id %in% plot_select)
+exfi_plot <- plot %>% filter(plot_id %in% plot_select)
 
 
 ## Plot and subplot size
@@ -23,10 +23,10 @@ plot_radius    <- 20
 subplot_radius <- 5
 
 ## Filter trees and calc agb
-tree_fi <- tree %>% filter(plot_id %in% plot_select)
+exfi_tree <- tree %>% filter(plot_id %in% plot_select)
 
-fi_tagb<- tree_fi %>%
-  left_join(plot_fi, by = "plot_id") %>%
+exfi_tagb<- exfi_tree %>%
+  left_join(exfi_plot, by = "plot_id") %>%
   left_join(species_list, by = "sp_id") %>%
   left_join(wd_species, by = "sp_name") %>%
   left_join(wd_genus, by = "genus") %>%
@@ -69,7 +69,7 @@ fi_tagb<- tree_fi %>%
 #   theme_bw()
 # print(gr_tagb)
 
-fi_pagb <- fi_tagb %>%
+exfi_pagb <- exfi_tagb %>%
   group_by(plot_id) %>%
   summarise(
     count_tree = sum(scale_factor),
@@ -83,7 +83,7 @@ fi_pagb <- fi_tagb %>%
 #   theme_bw()
 # print(gr_pagb)  
 
-fi_agb <- fi_pagb %>%
+exfi_agb <- exfi_pagb %>%
   summarise(
     n_plot   = n(),
     n_tree   = mean(count_tree),
@@ -99,10 +99,10 @@ fi_agb <- fi_pagb %>%
 
 ## FI plot location
 set.seed(36)
-sf_fi <- st_sample(x = sf_lc1 %>% filter(id == 390), size = 10) %>% 
+sf_exfi <- st_sample(x = sf_lc1 %>% filter(id == 390), size = 10) %>% 
   st_as_sf() %>%
   mutate(id = 1:10) %>%
-  bind_cols(fi_pagb)
+  bind_cols(exfi_pagb)
 
 # tmap_mode("view")
 # tm_shape(sf_lc1) + tm_polygons(col = "lc", palette = palette1, popup.vars = c("lc", "id"), border.alpha = 0) +

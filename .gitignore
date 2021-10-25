@@ -3,9 +3,10 @@
 
 _bookdown_files/
 data/
+fonts/
 docs/
-results/
 Handbook/
+results/
 *.log
 
 # History files

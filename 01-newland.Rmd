@@ -56,7 +56,7 @@ cat(paste0('
 ```
 
 
-The remote sensing team has developed land cover and topographic maps based on 30 m resolution remote sensing images and a first exploration crew measured a few forest plots. Based on their observations, we will be able to have a quick overview of ```r newland_name```. This data is call **auxiliary data**, it is not NFI data *per se*, but useful information to help designing and implementing an NFI.
+The remote sensing team has developed land cover and topographic maps based on 30 m resolution remote sensing images and a first exploratiosn crew measured a few foret plots. Based on their observations, we will be able to have a quick overview of ```r newland_name```. This data is call **auxiliary data**, it is not NFI data *per se*, but useful information to help designing and implementing an NFI.
 
 In the next section, we will have a quick look at both the exploration crew's forest inventory data, loaded in R as objects with the `exfi` prefix, and we will use the land cover maps to calculate the area of the main land cover types.
 

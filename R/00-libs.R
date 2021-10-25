@@ -19,3 +19,27 @@ tmap_options(check.and.fix = TRUE)
 
 ## Tidy data
 library(tidyverse)
+
+
+## For downloadable pdf version
+library(extrafont)
+
+## Load Windows fonts and add Computer modern if missing -- for Windows
+if (Sys.info()['sysname'] == "Windows") {
+  
+  dir.create("fonts", showWarnings = F)
+  windowsFonts()
+  
+  if (!("CMU Serif"  %in% names(windowsFonts()))) {
+    download.file(
+      url = "https://www.fontsquirrel.com/fonts/download/computer-modern", 
+      destfile = "fonts/computer-modern.zip", 
+      mode = "wb"
+    )
+    unzip(zipfile = "fonts/computer-modern.zip", exdir = "fonts/computer-modern")
+    extrafont::font_import(paths = "fonts", recursive = T, pattern = "cmu*", prompt = FALSE)
+    extrafont::loadfonts(device = "win")
+  } ## END IF check font CMU
+  
+} ## END IF check OS
+
