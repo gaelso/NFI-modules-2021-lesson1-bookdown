@@ -1,0 +1,9 @@
+
+\newpage
+
+# Conclusion {-}
+
+This is the end of the lesson 1. In the next lessons, we use these preliminary data to design different sampling frames and analyze tree and plot data. We will use this data to estimate several NFI main variables, such as carbon, biodiversity or production indicators.
+
+
+

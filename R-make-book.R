@@ -49,7 +49,7 @@ bookdown::render_book(
   output_dir = paste0("Handbook/Handbook-gitbook-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
 )
 
-## HTML - GITBOOK
+## HTML - GITBOOK - FINAL
 bookdown::render_book(
   input = "index.Rmd",
   output_format = "bookdown::gitbook",

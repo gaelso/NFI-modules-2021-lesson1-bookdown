@@ -1,6 +1,9 @@
 
+\newpage
 
 # Results of a small scale preliminary forest inventory
+
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 ## Overview
 
@@ -12,20 +15,21 @@ exfi_agb
 
 ```
 
+\  
+
 ::::::{.infobox data-latex=""}
 
-Since we are using functions form the `tidyverse` collection of R packages, data tables in these interactive lessons are `tibbles`. They are simple rectangular tables (Each column has the same number of rows) plus when running their names in the console, we get the number of rows and columns, the column names with the type of data and the first 1 0values for each column.
+Since we are using functions from the `tidyverse` collection of R packages, data tables in these interactive lessons are `tibbles`. They are simple rectangular tables (each column has the same number of rows) plus when running their names in the console, we get the number of rows and columns, the column names with the type of data and the first 10 values for each column.
 
 ::::::
 
-The table (or tibble) `exfi_agb` contains the number of plots `n_plot`, the mean and standard deviation for aboveground biomass and basal area: `mean_agb` and  `sd_agb` in ton/ha, `mean_ba` and `sd_ba` in m^2^/ha. `ci` and `ci_perc` represent the confidence interval around the mean AGB in ton/ha and percentage of the mean respectively.
-
-
 \  
+
+The table (or tibble) `exfi_agb` contains the number of plots `n_plot`, the mean and standard deviation for aboveground biomass and basal area: `mean_agb` and  `sd_agb` in ton/ha, `mean_ba` and `sd_ba` in m^2^/ha. `ci` and `ci_perc` represent the confidence interval around the mean AGB in ton/ha and percentage of the mean respectively.
 
 The 10 plots come from a random sample in one of the Evergreen Forest of ```r newland_name```. The crew also shared the plot level aboveground biomass in the table name `exfi_pagb`. 
 
-**Your turn! Run the table `exfi_pagb` in the console below to see the table basic information.**
+\  
 
 ::::::{.infobox data-latex=""}
 
@@ -37,6 +41,9 @@ The interactive lessons are designed on a try and error model. The code is first
 
 ::::::
 
+\  
+
+**Your turn! Run the table name `exfi_pagb` in the console below to see the table basic information.**
 
 ```{r fi-cons, eval=F, class.source="Rchunk-cons"}
 
@@ -106,7 +113,7 @@ exfi_agb2
 
 We have successfully found back the same values for AGB: ```r round(exfi_agb$mean_agb, 2)``` ton/ha on average with a standard deviation of ```r round(exfi_agb$sd_agb, 2)```.
 
-In the next section we will have an overview of the spatial data on ```r newland_name```' land cover classes.
+In the next section we will have an overview of the spatial data on ```r newland_name```'s land cover classes.
 
 \  
 

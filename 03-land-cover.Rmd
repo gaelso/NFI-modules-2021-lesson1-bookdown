@@ -1,6 +1,9 @@
 
+\newpage
 
 # land cover types and areas
+
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 ## Spatial objects
 
@@ -42,7 +45,7 @@ t4 <- arrange(.data = t3, lc_id)
 
 ```
 
-Notice that with the pipe operator `%>%` we can place the command s one after the other and the resulting table of each function is silently passed to the next function: we don't need to repeat the input `.data = `.
+Notice that with the pipe operator `%>%` we can place the command s one after the other and the resulting table of each function is silently passed to the next function. We don't need to repeat the input `.data = `.
 
 :::::::
 
@@ -83,7 +86,7 @@ area_lc <- sf_lc %>%
 area_lc
 ```
 
-**Your turn! Calculate the total area of land in an object `area_tot`, all land cover together.** 
+**Your turn! Calculate the total area of land in ```r newland_name```, all land cover classes together, and save it in an object `area_tot`.** 
 
 Hint: `group_by()`  is not necessary anymore
 
@@ -103,7 +106,7 @@ area_tot
 
 ```
 
-```{r fi-agb-sol, class.source="Rchunk-sol", class.output="Rout-sol"}
+```{r lc-area-sol, class.source="Rchunk-sol", class.output="Rout-sol"}
 
 area_tot <- sf_lc %>%
   mutate(
