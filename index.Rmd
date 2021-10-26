@@ -44,6 +44,10 @@ if (book_format %in% c("html", "latex")) {
 
 ```
 
+\  
+
+\  
+
 
 <!-- ADD COVER PAGE TO HTML OUTPUT -->
 <!-- `r if (book_format == "html") ' -->
