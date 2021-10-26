@@ -1,10 +1,8 @@
 ---
 title: "NFI technical module 9: Practice"
-subtitle: |
-  | Lesson 1: Overview of the preliminary data 
-  | Handbook with solutions
+subtitle: "Lesson 1: Overview of the preliminary data"
 author: ""
-date: "Version 1.0 - October 2021"
+date: "Handbook with solutions - Version 1.0 - October 2021"
 subject: "copyright to be defined"
 keywords: "national forest inventory, biomass, sampling design, statistical sampling, allometric equations, wood density, data analysis"
 documentclass: article
