@@ -34,14 +34,6 @@ source("R/02-small-inventory.R")
 
 ## !!! For pdf install webshot and webshot::install_phantomjs() 
 
-
-## preview one chapter
-bookdown::preview_chapter(
-  input = c("index.Rmd", "01-1-newland-intro.Rmd", "01-3-newland-lc.Rmd"),
-  output_format = "bookdown::gitbook",
-  output_dir = paste0("Handbook/Handbook-gitbook-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
-)
-
 ## HTML - GITBOOK
 bookdown::render_book(
   input = "index.Rmd",
@@ -56,6 +48,12 @@ bookdown::render_book(
   output_dir = paste0("docs")
 )
 
+## preview one chapter
+bookdown::preview_chapter(
+  input = c("index.Rmd", "01-1-newland-intro.Rmd", "01-3-newland-lc.Rmd"),
+  output_format = "bookdown::gitbook",
+  output_dir = paste0("Handbook/Handbook-gitbook-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
+)
 
 ## PDF
 bookdown::render_book(

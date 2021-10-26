@@ -43,7 +43,7 @@ param1 <- tibble(
   w     = c(0.11, 0.23, 0.08, 0.21)
   ) %>%
   bind_rows(list(id_lc = 1, lc = "NF", w = 1 - sum(.$w))) %>%
-  mutate(hex = c("#00743f", "#379683", "#5cdb95", "#8ee4af", "#edf5e1")) %>% 
+  mutate(hex = c("#00743f", "#379683", "#5cdb95", "#ffcb9a", "#edf5e1")) %>% 
   bind_rows(list(id_lc = c(0, 6), lc = c("WA", "MG"), w = c(0, 0), hex = c("#73c2fb", "#012172"))) %>%
   arrange(id_lc)
 
