@@ -58,7 +58,7 @@ if (book_format %in% c("html", "latex")) {
 
 \  
 
-```{r img-cover, echo=F, out.width='75%', fig.asp=0.5, fig.align='center', fig.pos = 'H'}
+```{r img-cover, echo=F, out.width='60%', fig.asp=0.5, fig.align='center', fig.pos = 'H'}
 
 knitr::include_graphics(path = "data/louland/lc-image.png")
 
