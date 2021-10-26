@@ -48,6 +48,8 @@ bookdown::render_book(
   output_dir = paste0("docs")
 )
 
+
+
 ## preview one chapter
 bookdown::preview_chapter(
   input = c("index.Rmd", "01-1-newland-intro.Rmd", "01-3-newland-lc.Rmd"),
