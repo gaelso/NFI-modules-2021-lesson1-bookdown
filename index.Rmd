@@ -71,8 +71,8 @@ knitr::include_graphics(path = "data/louland/lc-image.png")
 \newpage
 
 
-**NFI technical module 9: Practice**
-**Lesson 1: Overview of the preliminary data - Handbook with solutions**
+**NFI eLearning Practice Simulation**
+**Lesson 1: Overview of the preliminary data**
 
 \  
 
