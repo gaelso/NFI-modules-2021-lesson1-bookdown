@@ -11,6 +11,7 @@ table(plot$lu_factor)
 
 plot_init <- plot %>% filter(lu_factor == "Evergreen") %>% pull(plot_id)
 
+set.seed(36)
 plot_select <- sample(1:length(plot_init), 10)
 
 plot_select <- plot_init[plot_select]
