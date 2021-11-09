@@ -11,7 +11,7 @@ table(plot$lu_factor)
 
 plot_init <- plot %>% filter(lu_factor == "Evergreen") %>% pull(plot_id)
 
-set.seed(36)
+set.seed(100)
 plot_select <- sample(1:length(plot_init), 10)
 
 plot_select <- plot_init[plot_select]
@@ -99,7 +99,7 @@ exfi_agb <- exfi_pagb %>%
   )
 
 ## FI plot location
-set.seed(36)
+set.seed(100)
 sf_exfi <- st_sample(x = sf_lc1 %>% filter(id == 406), size = 10) %>% 
   st_as_sf() %>%
   mutate(id = 1:10) %>%
