@@ -184,7 +184,7 @@ DRAFT
 <div id="overview" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Overview</h2>
 <p>First, let’s have a look at the results of 10 forest plots measured by the exploration crew. The data is stored in the object <code>exfi_agb</code>. By running the object name in the console we will see the results:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb1-1" aria-hidden="true" tabindex="-1"></a>exfi_agb</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb2-1" aria-hidden="true" tabindex="-1"></a>exfi_agb</span></code></pre></div>
 <pre class="Rout-demo"><code># A tibble: 1 x 8
   n_plot n_tree mean_ba sd_ba mean_agb sd_agb    ci ci_perc
    &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
@@ -204,9 +204,9 @@ DRAFT
 </div>
 <p> </p>
 <p><strong>Your turn! Run the table name <code>exfi_pagb</code> in the console below to see the table basic information.</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r Rchunk-cons"><code class="sourceCode r"><span id="cb3-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Console</span></span>
-<span id="cb3-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb4-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb4-1" aria-hidden="true" tabindex="-1"></a>exfi_pagb</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r Rchunk-cons"><code class="sourceCode r"><span id="cb4-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Console</span></span>
+<span id="cb4-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb5-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb5-1" aria-hidden="true" tabindex="-1"></a>exfi_pagb</span></code></pre></div>
 <pre class="Rout-sol"><code># A tibble: 10 x 4
    plot_id count_tree plot_ba plot_agb
    &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
@@ -227,34 +227,34 @@ DRAFT
 <h2><span class="header-section-number">2.2</span> Recalculate the mean AGB</h2>
 <p>Given that the crew chose the plot location randomly, we can use simple aggregating functions to re-calculate the forest mean aboveground biomass and confirm their calculation. We will use a mix of base R and <code>tidyverse</code> functions, in particular <code>summarise()</code>. This function is very handy to aggregate numerical variables in different columns of our plot table and can even be used in combination to <code>group_by()</code> to summarize numerical variables based on category variables of the same table (more on that later, with the full NFI data).</p>
 <p>Let’s see for example how to calculate the mean basal area of the forest with its standard deviation, and save the results in a table <code>exfi_ba</code>. After creating the table, we run the table name in the console to display its content.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb6-1" aria-hidden="true" tabindex="-1"></a>exfi_ba <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb6-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ba =</span> <span class="fu">mean</span>(plot_ba),</span>
-<span id="cb6-4"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ba   =</span> <span class="fu">sd</span>(plot_ba)</span>
-<span id="cb6-5"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb6-7" aria-hidden="true" tabindex="-1"></a>exfi_ba</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-1" aria-hidden="true" tabindex="-1"></a>exfi_ba <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ba =</span> <span class="fu">mean</span>(plot_ba),</span>
+<span id="cb7-4"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ba   =</span> <span class="fu">sd</span>(plot_ba)</span>
+<span id="cb7-5"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-7" aria-hidden="true" tabindex="-1"></a>exfi_ba</span></code></pre></div>
 <pre class="Rout-demo"><code># A tibble: 1 x 2
   mean_ba sd_ba
     &lt;dbl&gt; &lt;dbl&gt;
 1    23.8  19.5</code></pre>
 <p> </p>
 <p><strong>Your turn! Create a table <code>exfi_agb2</code> wiath the columns <code>mean_agb</code> nd <code>sd_agb</code> and display the results.</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r Rchunk-cons"><code class="sourceCode r"><span id="cb8-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Console</span></span>
-<span id="cb8-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb8-2" aria-hidden="true" tabindex="-1"></a>exfi_agb2 <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb8-4"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_agb =</span> <span class="fu">mean</span>(___),</span>
-<span id="cb8-5"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_agb   =</span> <span class="fu">sd</span>(___)</span>
-<span id="cb8-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb8-8" aria-hidden="true" tabindex="-1"></a>exfi_agb2</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb9-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-1" aria-hidden="true" tabindex="-1"></a>exfi_agb2 <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb9-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_agb =</span> <span class="fu">mean</span>(plot_agb),</span>
-<span id="cb9-4"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_agb   =</span> <span class="fu">sd</span>(plot_agb)</span>
-<span id="cb9-5"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-7" aria-hidden="true" tabindex="-1"></a>exfi_agb2</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r Rchunk-cons"><code class="sourceCode r"><span id="cb9-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Console</span></span>
+<span id="cb9-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-2" aria-hidden="true" tabindex="-1"></a>exfi_agb2 <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-4"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_agb =</span> <span class="fu">mean</span>(___),</span>
+<span id="cb9-5"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_agb   =</span> <span class="fu">sd</span>(___)</span>
+<span id="cb9-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-8" aria-hidden="true" tabindex="-1"></a>exfi_agb2</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb10-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-1" aria-hidden="true" tabindex="-1"></a>exfi_agb2 <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb10-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_agb =</span> <span class="fu">mean</span>(plot_agb),</span>
+<span id="cb10-4"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_agb   =</span> <span class="fu">sd</span>(plot_agb)</span>
+<span id="cb10-5"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-7" aria-hidden="true" tabindex="-1"></a>exfi_agb2</span></code></pre></div>
 <pre class="Rout-sol"><code># A tibble: 1 x 2
   mean_agb sd_agb
      &lt;dbl&gt;  &lt;dbl&gt;

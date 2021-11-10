@@ -184,7 +184,7 @@ DRAFT
 <div id="spatial-objects" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Spatial objects</h2>
 <p>We can use the land cover shapefile provided to us by the remote sensing analysts to view the extent of the different land covers and calculate the area of the forest cover. The shapefile is loaded in the R environment under the name <code>sf_lc</code> with the package <code>sf</code>. It contains both the attribute table, the geometries and the coordinate reference system of <code>Louland</code>’s land cover. Running the object by its name in the console displays its summary information.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="land-cover-types-and-areas.html#cb11-1" aria-hidden="true" tabindex="-1"></a>sf_lc</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="land-cover-types-and-areas.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sf_lc</span></code></pre></div>
 <pre class="Rout-demo"><code>Simple feature collection with 543 features and 4 fields
 Geometry type: POLYGON
 Dimension:     XY
@@ -204,11 +204,11 @@ First 10 features:
 10 10     5 EV       Evergreen POLYGON ((567339.4 10009810...</code></pre>
 <p>This summary view regroups the Coordinate Reference System (CRS), the type of geometry (polygon), the number of polygons (features) and fields and the detailed information on the first 10 polygons in the whole shapefile. The four fields represent the polygon IDs (<code>id</code>), the land cover IDs (<code>lc_id</code>), codes (<code>lc</code>) and names (<code>lc_name</code>).</p>
 <p>To isolate the list of different land covers we first need to convert the spatial data into a tibble with <code>as_tibble()</code>, then select only the columns related to land cover information with <code>select()</code>. We can use the <code>distinct()</code> function to keep only unique values across the newly formed data table. Finally, since the land cover IDs are numerical we can sort the resulting table by increasing value of <code>lc_id</code> with the function <code>arrange()</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="land-cover-types-and-areas.html#cb13-1" aria-hidden="true" tabindex="-1"></a>sf_lc <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="land-cover-types-and-areas.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="land-cover-types-and-areas.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(lc_id, lc, lc_name) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="land-cover-types-and-areas.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-5"><a href="land-cover-types-and-areas.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(lc_id)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="land-cover-types-and-areas.html#cb14-1" aria-hidden="true" tabindex="-1"></a>sf_lc <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="land-cover-types-and-areas.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="land-cover-types-and-areas.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(lc_id, lc, lc_name) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="land-cover-types-and-areas.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="land-cover-types-and-areas.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(lc_id)</span></code></pre></div>
 <pre class="Rout-demo"><code># A tibble: 7 x 3
   lc_id lc    lc_name        
   &lt;dbl&gt; &lt;fct&gt; &lt;chr&gt;          
@@ -222,10 +222,10 @@ First 10 features:
 <div class="infobox">
 <p>With the <code>tidyverse</code> packages we have the pipe operator <code>%&gt;%</code>. This operator allows us to apply functions one after the other in a sequence and without needing to save each intermediate step in a new object.</p>
 <p>Step-by-step the above code could be written:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="land-cover-types-and-areas.html#cb15-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(sf_lc)</span>
-<span id="cb15-2"><a href="land-cover-types-and-areas.html#cb15-2" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> <span class="fu">select</span>(<span class="at">.data =</span> t1, lc_id, lc, lc_name)</span>
-<span id="cb15-3"><a href="land-cover-types-and-areas.html#cb15-3" aria-hidden="true" tabindex="-1"></a>t3 <span class="ot">&lt;-</span> <span class="fu">distinct</span>(<span class="at">.data =</span> t2)</span>
-<span id="cb15-4"><a href="land-cover-types-and-areas.html#cb15-4" aria-hidden="true" tabindex="-1"></a>t4 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(<span class="at">.data =</span> t3, lc_id)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="land-cover-types-and-areas.html#cb16-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(sf_lc)</span>
+<span id="cb16-2"><a href="land-cover-types-and-areas.html#cb16-2" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> <span class="fu">select</span>(<span class="at">.data =</span> t1, lc_id, lc, lc_name)</span>
+<span id="cb16-3"><a href="land-cover-types-and-areas.html#cb16-3" aria-hidden="true" tabindex="-1"></a>t3 <span class="ot">&lt;-</span> <span class="fu">distinct</span>(<span class="at">.data =</span> t2)</span>
+<span id="cb16-4"><a href="land-cover-types-and-areas.html#cb16-4" aria-hidden="true" tabindex="-1"></a>t4 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(<span class="at">.data =</span> t3, lc_id)</span></code></pre></div>
 <p>Notice that with the pipe operator <code>%&gt;%</code> we can place the command s one after the other and the resulting table of each function is silently passed to the next function. We don’t need to repeat the input <code>.data =</code>.</p>
 </div>
 <p> </p>
@@ -242,16 +242,16 @@ First 10 features:
 <h2><span class="header-section-number">3.2</span> Land cover areas</h2>
 <p><code>sf</code> objects behave similarly to standard tibbles, making it easy to apply <code>tidyverse</code> functions while keeping the spatial information or to convert them to tibbles with <code>as_tibble()</code>. The <code>sf</code> package also contains the <code>st_area()</code> function that we are going to use to calculate the areas of the land covers.</p>
 <p>In the following sequence we combine the function <code>mutate()</code> used to create or modify columns to our target table with <code>st_area()</code>. Since <code>st_area()</code> takes the whole spatial object as input, we could use <code>st_area(sf_lc)</code> or <code>st_area(.)</code>, which is the standard way to call the current state of a tibble inside a sequence of functions linked with pipes.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="land-cover-types-and-areas.html#cb16-1" aria-hidden="true" tabindex="-1"></a>area_lc <span class="ot">&lt;-</span> sf_lc <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="land-cover-types-and-areas.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb16-3"><a href="land-cover-types-and-areas.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_m2 =</span> <span class="fu">st_area</span>(.),</span>
-<span id="cb16-4"><a href="land-cover-types-and-areas.html#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_ha =</span> units<span class="sc">::</span><span class="fu">set_units</span>(area_m2, <span class="at">value =</span> ha)</span>
-<span id="cb16-5"><a href="land-cover-types-and-areas.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="land-cover-types-and-areas.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb16-7"><a href="land-cover-types-and-areas.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(lc) <span class="sc">%&gt;%</span></span>
-<span id="cb16-8"><a href="land-cover-types-and-areas.html#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">area_ha =</span> <span class="fu">sum</span>(area_ha))</span>
-<span id="cb16-9"><a href="land-cover-types-and-areas.html#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="land-cover-types-and-areas.html#cb16-10" aria-hidden="true" tabindex="-1"></a>area_lc</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="land-cover-types-and-areas.html#cb17-1" aria-hidden="true" tabindex="-1"></a>area_lc <span class="ot">&lt;-</span> sf_lc <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="land-cover-types-and-areas.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-3"><a href="land-cover-types-and-areas.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_m2 =</span> <span class="fu">st_area</span>(.),</span>
+<span id="cb17-4"><a href="land-cover-types-and-areas.html#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_ha =</span> units<span class="sc">::</span><span class="fu">set_units</span>(area_m2, <span class="at">value =</span> ha)</span>
+<span id="cb17-5"><a href="land-cover-types-and-areas.html#cb17-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="land-cover-types-and-areas.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb17-7"><a href="land-cover-types-and-areas.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(lc) <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="land-cover-types-and-areas.html#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">area_ha =</span> <span class="fu">sum</span>(area_ha))</span>
+<span id="cb17-9"><a href="land-cover-types-and-areas.html#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="land-cover-types-and-areas.html#cb17-10" aria-hidden="true" tabindex="-1"></a>area_lc</span></code></pre></div>
 <pre class="Rout-demo"><code># A tibble: 7 x 2
   lc    area_ha
   &lt;fct&gt;    [ha]
@@ -264,25 +264,25 @@ First 10 features:
 7 MG     10362.</code></pre>
 <p><strong>Your turn! Calculate the total area of land in <code>Louland</code>, all land cover classes together, and save it in an object <code>area_tot</code>.</strong></p>
 <p>Hint: <code>group_by()</code> is not necessary anymore</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r Rchunk-cons"><code class="sourceCode r"><span id="cb18-1"><a href="land-cover-types-and-areas.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Console</span></span>
-<span id="cb18-2"><a href="land-cover-types-and-areas.html#cb18-2" aria-hidden="true" tabindex="-1"></a>area_tot <span class="ot">&lt;-</span> sf_lc <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="land-cover-types-and-areas.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb18-4"><a href="land-cover-types-and-areas.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_m2 =</span> <span class="fu">st_area</span>(___),</span>
-<span id="cb18-5"><a href="land-cover-types-and-areas.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_ha =</span> units<span class="sc">::</span><span class="fu">set_units</span>(___, <span class="at">value =</span> ha)</span>
-<span id="cb18-6"><a href="land-cover-types-and-areas.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-7"><a href="land-cover-types-and-areas.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb18-8"><a href="land-cover-types-and-areas.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">___ =</span> <span class="fu">sum</span>(___))</span>
-<span id="cb18-9"><a href="land-cover-types-and-areas.html#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="land-cover-types-and-areas.html#cb18-10" aria-hidden="true" tabindex="-1"></a>area_tot</span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb19-1"><a href="land-cover-types-and-areas.html#cb19-1" aria-hidden="true" tabindex="-1"></a>area_tot <span class="ot">&lt;-</span> sf_lc <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="land-cover-types-and-areas.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-3"><a href="land-cover-types-and-areas.html#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_m2 =</span> <span class="fu">st_area</span>(.),</span>
-<span id="cb19-4"><a href="land-cover-types-and-areas.html#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_ha =</span> units<span class="sc">::</span><span class="fu">set_units</span>(area_m2, <span class="at">value =</span> ha)</span>
-<span id="cb19-5"><a href="land-cover-types-and-areas.html#cb19-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb19-6"><a href="land-cover-types-and-areas.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb19-7"><a href="land-cover-types-and-areas.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">area_ha =</span> <span class="fu">sum</span>(area_ha))</span>
-<span id="cb19-8"><a href="land-cover-types-and-areas.html#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="land-cover-types-and-areas.html#cb19-9" aria-hidden="true" tabindex="-1"></a>area_tot</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r Rchunk-cons"><code class="sourceCode r"><span id="cb19-1"><a href="land-cover-types-and-areas.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Console</span></span>
+<span id="cb19-2"><a href="land-cover-types-and-areas.html#cb19-2" aria-hidden="true" tabindex="-1"></a>area_tot <span class="ot">&lt;-</span> sf_lc <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="land-cover-types-and-areas.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-4"><a href="land-cover-types-and-areas.html#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_m2 =</span> <span class="fu">st_area</span>(___),</span>
+<span id="cb19-5"><a href="land-cover-types-and-areas.html#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_ha =</span> units<span class="sc">::</span><span class="fu">set_units</span>(___, <span class="at">value =</span> ha)</span>
+<span id="cb19-6"><a href="land-cover-types-and-areas.html#cb19-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="land-cover-types-and-areas.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb19-8"><a href="land-cover-types-and-areas.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">___ =</span> <span class="fu">sum</span>(___))</span>
+<span id="cb19-9"><a href="land-cover-types-and-areas.html#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="land-cover-types-and-areas.html#cb19-10" aria-hidden="true" tabindex="-1"></a>area_tot</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb20-1"><a href="land-cover-types-and-areas.html#cb20-1" aria-hidden="true" tabindex="-1"></a>area_tot <span class="ot">&lt;-</span> sf_lc <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="land-cover-types-and-areas.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-3"><a href="land-cover-types-and-areas.html#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_m2 =</span> <span class="fu">st_area</span>(.),</span>
+<span id="cb20-4"><a href="land-cover-types-and-areas.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_ha =</span> units<span class="sc">::</span><span class="fu">set_units</span>(area_m2, <span class="at">value =</span> ha)</span>
+<span id="cb20-5"><a href="land-cover-types-and-areas.html#cb20-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb20-6"><a href="land-cover-types-and-areas.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-7"><a href="land-cover-types-and-areas.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">area_ha =</span> <span class="fu">sum</span>(area_ha))</span>
+<span id="cb20-8"><a href="land-cover-types-and-areas.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="land-cover-types-and-areas.html#cb20-9" aria-hidden="true" tabindex="-1"></a>area_tot</span></code></pre></div>
 <pre class="Rout-sol"><code># A tibble: 1 x 1
   area_ha
      [ha]
