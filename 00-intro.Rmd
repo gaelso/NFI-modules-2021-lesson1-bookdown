@@ -20,12 +20,13 @@ The objectives of this lesson are:
 
 \ 
 
-In this lesson we will use the collection of packages grouped inside the package `tidyverse` for general data analysis and the package `sf` for spatial data analysis.
+In this lesson we will use the collection of packages grouped inside the package `tidyverse` for general data analysis and the package `sf` for spatial data analysis. We will also briefly use the package `units` to avoid confusion around area units.
 
 ```{r libs, eval=F}
 
 library(tidyverse)
 library(sf)
+library(units)
 
 ```
 
