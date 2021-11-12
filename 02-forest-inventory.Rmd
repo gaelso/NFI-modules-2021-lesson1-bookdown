@@ -83,7 +83,7 @@ exfi_ba
 
 \  
 
-**Your turn! Create a table `exfi_agb2` wiath the columns `mean_agb` nd `sd_agb` and display the results.**
+**Your turn! Create a table `exfi_agb2` with the columns `mean_agb` and `sd_agb` then display the results.**
 
 ```{r fi-agb-cons, eval=F, class.source="Rchunk-cons"}
 

@@ -75,8 +75,8 @@ bookdown::render_book(
   input = "index.Rmd",
   output_format = "bookdown::word_document2",
   output_file = paste0("Module 9 lesson 1-Overview of the preliminary data-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"), ".docx"),
-  output_dir = "Handbook",
-  output_options = list(reference_docx = "ref-empty.docx")
+  output_dir = "Handbook"#,
+  #output_options = list(reference_docx = "ref-empty.docx")
 )
 
 
