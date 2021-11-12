@@ -2,7 +2,7 @@
 title: "NFI eLearning Practice Simulation"
 subtitle: "Lesson 1: Overview of the preliminary data"
 author: ""
-date: "Handbook with solutions - Version 1.0 - October 2021"
+date: "Handbook with solutions - Version 0.3 - October 2021"
 subject: "copyright to be defined"
 keywords: "national forest inventory, biomass, sampling design, statistical sampling, allometric equations, wood density, data analysis"
 documentclass: article
