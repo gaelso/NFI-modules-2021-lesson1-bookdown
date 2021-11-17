@@ -47,12 +47,41 @@ if (book_format %in% c("html", "latex")) {
 
 <!-- ADD COVER PAGE TO HTML OUTPUT -->
 <!-- `r if (book_format == "html") ' -->
+
 # Cover page {-}
-<!-- '` -->
-
-
 
 `r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
+
+::::::{.cols data-latex=""}
+
+:::{.col data-latex="{0.4\textwidth}"}
+
+This is Lesson 1 of the NFI eLearning interactive module. It features interactive lessons designed to practice National Forest Inventory (NFI) sampling and the exploratory analysis of NFI field data with the [R programming language](www.r-project.com). 
+
+This interactive module is designed to complement the NFI eLearning modules with practical hands-on exercises on a fictional island that just emerged in the middle of the Atlantic Ocean. Although this land is not an official country, we will use the acronym NFI when referring to its forest inventory as the method and formulas applied here are valid for nationwide forest inventories. 
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+
+:::
+
+:: {.col data-latex="{0.05\textwidth}"}
+\ 
+<!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.55\textwidth}"}
+
+```{r img-cover, echo=F, out.width='50%', fig.asp=0.5, fig.align='center', fig.pos = 'H'}
+
+knitr::include_graphics(path = "data/louland/lc-image.png")
+
+```
+
+:::
+
+<!-- '` -->
+
 
 \  
 

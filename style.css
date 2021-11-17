@@ -68,6 +68,8 @@ pre code {
   white-space: inherit;
 }
 
+.cols {display: flex; }
+
 /* Style for watermark oand boxes*/
 .watermark {
   opacity: 0.3;
