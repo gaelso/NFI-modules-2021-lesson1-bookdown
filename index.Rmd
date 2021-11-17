@@ -1,5 +1,5 @@
 ---
-title: "NFI eLearning Practice Simulation"
+title: "NFI eLearning Practice Module"
 subtitle: "Lesson 1: Overview of the preliminary data"
 author: ""
 date: "Handbook with solutions - Version 1.0 - October 2021"
@@ -53,15 +53,15 @@ if (book_format %in% c("html", "latex")) {
 
 <txt-green>Welcome to the first lesson</txt-green> of the **National Forest Inventory eLearning practice module**.
 
+<img src="data/louland/lc-image.png" width="500" height="500" alt="The geocompr book cover" align="right" style="margin: 0 2em 2em 2em" />
+
 \  
 
-<img src="data/louland/lc-image.png" width="600" height="600" alt="The geocompr book cover" align="right" style="margin: 2em 2em 2em 2em" />
-  
 This interactive module is designed to complement the [NFI eLearning modules](https://bit.ly/3m5VEsE) with practical hands-on exercises. These exercises take place on a fictional island that just emerged in the middle of the Atlantic Ocean: `Louland`. 
 
-\ 
-
 It features interactive lessons designed to practice National Forest Inventory (NFI) sampling and the exploratory analysis of NFI field data with the [R programming language](www.r-project.com). Although this fictional land is not an official country, we will use the acronym NFI when referring to its forest inventory as the method and formulas applied here are valid for nationwide forest inventories.
+
+\ 
 
 \  
 
