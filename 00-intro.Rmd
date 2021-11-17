@@ -1,26 +1,22 @@
 
 \newpage
 
-# Introduction {-}
+# Objectives {-}
 
 `r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
-<txt-green>Welcome to the first lesson</txt-green> of the National Forest Inventory eLearning practice simulation module.
-
-This interactive module is designed to complement the National Forest Inventory eLearning Modules with practical hands-on exercises on a fictional island that just emerged in the middle of the Atlantic Ocean: `Louland`. Although this land is not an official country, we will use the acronym NFI when referring to its forest inventory as the method and formulas applied here are valid for nationwide forest inventories.
-
-In this first lesson: **Overview of the preliminary data**, we will discover the land cover of `Louland` and we will recalculate the average Aboveground Biomass (AGB) of a small inventory carried out by the first exploration crew in one forest stand. 
+In this first lesson, **Overview of the preliminary data**, we will discover the land cover of `Louland`, and we will recalculate the average Aboveground Biomass (AGB) of a small inventory, carried out by the first exploration crew in one forest stand. 
 
 The objectives of this lesson are:
 
 - familiarize yourself with how the interactive lessons of the NFI technical module 9 work,
 - familiarize yourself with `Louland`, our fictional land to practice national Forest Inventory sampling design and data analysis,
 - Calculate an average AGB estimate for one forest stand,
-- Calculate the area of different land covers, based on shapefile spatial data.
+- Calculate the areas of different land covers, based on shapefile spatial data.
 
 \ 
 
-In this lesson we will use the collection of packages grouped inside the package `tidyverse` for general data analysis and the package `sf` for spatial data analysis. We will also briefly use the package `units` to avoid confusion around area units.
+In this lesson, we will use the collection of packages grouped inside the package `tidyverse` for general data analysis and the package `sf` for spatial data analysis. We will also briefly use the package `units` to avoid confusion around area units.
 
 ```{r libs, eval=F}
 

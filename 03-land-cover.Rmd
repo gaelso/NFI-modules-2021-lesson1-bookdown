@@ -7,7 +7,7 @@
 
 ## Spatial objects
 
-We can use the land cover shapefile provided to us by the remote sensing analysts to view the extent of the different land covers and calculate the area of the forest cover. The shapefile is loaded in the R environment under the name `sf_lc` with the package `sf`. It contains both the attribute table, the geometries and the coordinate reference system of ```r newland_name```'s land cover. Running the object by its name in the console displays its summary information.
+We can use the land cover shapefile provided to us, by the remote sensing analysts, to view the extent of the different land covers and calculate the area of the forest cover. The shapefile is loaded in the R environment under the name `sf_lc` with the package `sf`. It contains the attribute table, the geometries and the coordinate reference system of ```r newland_name```'s land cover. Running the object by its name in the console displays its summary information.
 
 ```{r sf_newland}
 
@@ -15,9 +15,9 @@ sf_lc
 
 ```
 
-This summary view regroups the Coordinate Reference System (CRS), the type of geometry (polygon), the number of polygons (features) and fields and the detailed information on the first 10 polygons in the whole shapefile. The four fields represent the polygon IDs (`id`), the land cover IDs (`lc_id`), codes (`lc`) and names (`lc_name`). 
+This summary view regroups the Coordinate Reference System (CRS), the type of geometry (polygon), the number of polygons (features) and fields, and the detailed information on the first 10 polygons in the shapefile. The four fields represent the polygon IDs (`id`), the land cover IDs (`lc_id`), codes (`lc`) and names (`lc_name`). 
 
-To isolate the list of different land covers we first need to convert the spatial data into a tibble with `as_tibble()`, then select only the columns related to land cover information with `select()`. We can use the `distinct()` function to keep only unique values across the newly formed data table. Finally, since the land cover IDs are numerical  we can sort the resulting table by increasing value of `lc_id` with the function `arrange()`.
+To isolate the list of different land covers we first need to convert the spatial data into a tibble with the function `as_tibble()`, then select only the columns related to land cover information with the function `select()`. We can use the `distinct()` function to keep only unique values across the newly formed data table. Finally, since the land cover IDs are numerical, we can sort the resulting table by increasing value of `lc_id` with the function `arrange()`.
 
 ```{r lc-info}
 
@@ -30,11 +30,13 @@ sf_lc %>%
 
 ```
 
+\  
+
 ::::::{.infobox data-latex=""}
 
-With the `tidyverse` packages we have the pipe operator `%>%`. This operator allows us to apply functions one after the other in a sequence and without needing to save each intermediate step in a new object.
+With the `tidyverse` packages, we have the pipe operator, `%>%`. This operator allows us to apply functions one after the other, in a sequence and without needing to save each intermediate step in a new object.
 
-Step-by-step the above code could be written:
+Step-by-step the above code could be written as:
 
 ```{r, eval=F}
 
@@ -45,7 +47,7 @@ t4 <- arrange(.data = t3, lc_id)
 
 ```
 
-Notice that with the pipe operator `%>%` we can place the command s one after the other and the resulting table of each function is silently passed to the next function. We don't need to repeat the input `.data = `.
+Notice that with the pipe operator, `%>%`, we can place the commands one after the other and the resulting table of each function is silently passed to the next function. We don't need to repeat the input `.data = `.
 
 :::::::
 
@@ -55,13 +57,13 @@ Notice that with the pipe operator `%>%` we can place the command s one after th
 
 **Let's set a few naming conventions.**
 
-All forest inventory related tables are stored in R objects with names related to their contents. For example the NFI plot and tree data are stored in tables `plot` and `tree`, respectively. 
+All forest inventory-related tables are stored in R objects with names related to their contents. For example the NFI plot and tree data are stored in tables `plot` and `tree`, respectively. 
 
-Using `plot` as a table name is not very good practice in R as `plot()` is the base R function for plotting data. But we keep it nonetheless because it is an informative name. The NFI tables in this tutorial are: `plot`, `tree` and `species_list`. 
+Using `plot` as a table name is not very good practice in R, as `plot()` is the base R function for plotting data. However, we still keep it because it is an informative name. The NFI tables in this tutorial are: `plot`, `tree` and `species_list`. 
 
-The prefix `exfi_` from the tables shown in the oprevious section was added for the data from the first exploration crew forest inventory.
+The prefix `exfi_`, from the tables shown in the previous section was added for the data from the first exploration crew's forest inventory.
 
-Similarly all spatial data are handled mostly with the `sf` package, and the prefix `sf_` was used as a naming convention. The spatial objects available for this tutorial are as follows: `sf_admin`, `sf_lc` and `sf_topo`, respectively the administrative boundaries, land cover, and topography of ```r newland_name```.
+Similarly, all spatial data are handled mostly with the `sf` package, and the prefix, `sf_`, was used as a naming convention. The spatial objects available for this tutorial are as follows: `sf_admin`, `sf_lc` and `sf_topo`, respectively the administrative boundaries, land cover, and topography of ```r newland_name```.
 
 ::::::
 
@@ -69,9 +71,9 @@ Similarly all spatial data are handled mostly with the `sf` package, and the pre
 
 ## Land cover areas
 
-`sf` objects behave similarly to standard tibbles, making it easy to apply `tidyverse` functions while keeping the spatial information or to convert them to tibbles with `as_tibble()`. The `sf` package also contains the `st_area()` function that we are going to use to calculate the areas of the land covers.
+`sf` objects behave similarly to standard tibbles, making it easy to apply `tidyverse` functions, while keeping the spatial information, or to convert them to tibbles with the function `as_tibble()`. The `sf` package also contains the `st_area()` function that we are going to use to calculate the areas of the land covers.
 
-In the following sequence we combine the function `mutate()` used to create or modify columns to our target table with `st_area()`. Since `st_area()` takes the whole spatial object as input, we could use `st_area(sf_lc)` or `st_area(.)`, which is the standard way to call the current state of a tibble inside a sequence of functions linked with pipes.
+In the following sequence, we combine the function `mutate()`, used to create or modify columns in our target table, with the function `st_area()`. Since `st_area()` takes the whole spatial object as input, we could use `st_area(sf_lc)` or `st_area(.)`, which is the standard way to call the current state of a tibble inside a sequence of functions linked with pipes.
 
 ```{r get-area}
 area_lc <- sf_lc %>%
