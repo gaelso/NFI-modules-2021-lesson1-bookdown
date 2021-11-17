@@ -142,11 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./index.html"><b>NFI module 9 lesson 1</b></a></li>
+<li><a href="./index.html"><b>NFI eLearning Practice L1</b></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover page</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="objectives.html"><a href="objectives.html"><i class="fa fa-check"></i>Objectives</a></li>
 <li class="chapter" data-level="1" data-path="newland.html"><a href="newland.html"><i class="fa fa-check"></i><b>1</b> A new land has emerged</a></li>
 <li class="chapter" data-level="2" data-path="results-of-a-small-scale-preliminary-forest-inventory.html"><a href="results-of-a-small-scale-preliminary-forest-inventory.html"><i class="fa fa-check"></i><b>2</b> Results of a small scale preliminary forest inventory</a>
 <ul>
@@ -159,6 +159,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="land-cover-types-and-areas.html"><a href="land-cover-types-and-areas.html#land-cover-areas"><i class="fa fa-check"></i><b>3.2</b> Land cover areas</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="divider"></li>
+<li><a href="https://bit.ly/3m5VEsE" target="blank"><b>NFI eLearning modules</b></a></li>
+
 </ul>
 
       </nav>
@@ -178,12 +181,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="land-cover-types-and-areas" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> land cover types and areas</h1>
-<div class="watermark">
-DRAFT
-</div>
 <div id="spatial-objects" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Spatial objects</h2>
-<p>We can use the land cover shapefile provided to us by the remote sensing analysts to view the extent of the different land covers and calculate the area of the forest cover. The shapefile is loaded in the R environment under the name <code>sf_lc</code> with the package <code>sf</code>. It contains both the attribute table, the geometries and the coordinate reference system of <code>Louland</code>’s land cover. Running the object by its name in the console displays its summary information.</p>
+<p>We can use the land cover shapefile provided to us, by the remote sensing analysts, to view the extent of the different land covers and calculate the area of the forest cover. The shapefile is loaded in the R environment under the name <code>sf_lc</code> with the package <code>sf</code>. It contains the attribute table, the geometries and the coordinate reference system of <code>Louland</code>’s land cover. Running the object by its name in the console displays its summary information.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="land-cover-types-and-areas.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sf_lc</span></code></pre></div>
 <pre class="Rout-demo"><code>Simple feature collection with 543 features and 4 fields
 Geometry type: POLYGON
@@ -202,8 +202,8 @@ First 10 features:
 8   8     1 NF      Non-forest POLYGON ((562396.2 10009759...
 9   9     5 EV       Evergreen POLYGON ((616198.6 10009770...
 10 10     5 EV       Evergreen POLYGON ((567339.4 10009810...</code></pre>
-<p>This summary view regroups the Coordinate Reference System (CRS), the type of geometry (polygon), the number of polygons (features) and fields and the detailed information on the first 10 polygons in the whole shapefile. The four fields represent the polygon IDs (<code>id</code>), the land cover IDs (<code>lc_id</code>), codes (<code>lc</code>) and names (<code>lc_name</code>).</p>
-<p>To isolate the list of different land covers we first need to convert the spatial data into a tibble with <code>as_tibble()</code>, then select only the columns related to land cover information with <code>select()</code>. We can use the <code>distinct()</code> function to keep only unique values across the newly formed data table. Finally, since the land cover IDs are numerical we can sort the resulting table by increasing value of <code>lc_id</code> with the function <code>arrange()</code>.</p>
+<p>This summary view regroups the Coordinate Reference System (CRS), the type of geometry (polygon), the number of polygons (features) and fields, and the detailed information on the first 10 polygons in the shapefile. The four fields represent the polygon IDs (<code>id</code>), the land cover IDs (<code>lc_id</code>), codes (<code>lc</code>) and names (<code>lc_name</code>).</p>
+<p>To isolate the list of different land covers we first need to convert the spatial data into a tibble with the function <code>as_tibble()</code>, then select only the columns related to land cover information with the function <code>select()</code>. We can use the <code>distinct()</code> function to keep only unique values across the newly formed data table. Finally, since the land cover IDs are numerical, we can sort the resulting table by increasing value of <code>lc_id</code> with the function <code>arrange()</code>.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="land-cover-types-and-areas.html#cb14-1" aria-hidden="true" tabindex="-1"></a>sf_lc <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="land-cover-types-and-areas.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="land-cover-types-and-areas.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(lc_id, lc, lc_name) <span class="sc">%&gt;%</span></span>
@@ -219,29 +219,30 @@ First 10 features:
 5     4 MD    Mixed Deciduous
 6     5 EV    Evergreen      
 7     6 MG    Mangrove       </code></pre>
+<p> </p>
 <div class="infobox">
-<p>With the <code>tidyverse</code> packages we have the pipe operator <code>%&gt;%</code>. This operator allows us to apply functions one after the other in a sequence and without needing to save each intermediate step in a new object.</p>
-<p>Step-by-step the above code could be written:</p>
+<p>With the <code>tidyverse</code> packages, we have the pipe operator, <code>%&gt;%</code>. This operator allows us to apply functions one after the other, in a sequence and without needing to save each intermediate step in a new object.</p>
+<p>Step-by-step the above code could be written as:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="land-cover-types-and-areas.html#cb16-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(sf_lc)</span>
 <span id="cb16-2"><a href="land-cover-types-and-areas.html#cb16-2" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> <span class="fu">select</span>(<span class="at">.data =</span> t1, lc_id, lc, lc_name)</span>
 <span id="cb16-3"><a href="land-cover-types-and-areas.html#cb16-3" aria-hidden="true" tabindex="-1"></a>t3 <span class="ot">&lt;-</span> <span class="fu">distinct</span>(<span class="at">.data =</span> t2)</span>
 <span id="cb16-4"><a href="land-cover-types-and-areas.html#cb16-4" aria-hidden="true" tabindex="-1"></a>t4 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(<span class="at">.data =</span> t3, lc_id)</span></code></pre></div>
-<p>Notice that with the pipe operator <code>%&gt;%</code> we can place the command s one after the other and the resulting table of each function is silently passed to the next function. We don’t need to repeat the input <code>.data =</code>.</p>
+<p>Notice that with the pipe operator, <code>%&gt;%</code>, we can place the commands one after the other and the resulting table of each function is silently passed to the next function. We don’t need to repeat the input <code>.data =</code>.</p>
 </div>
 <p> </p>
 <div class="infobox">
 <p><strong>Let’s set a few naming conventions.</strong></p>
-<p>All forest inventory related tables are stored in R objects with names related to their contents. For example the NFI plot and tree data are stored in tables <code>plot</code> and <code>tree</code>, respectively.</p>
-<p>Using <code>plot</code> as a table name is not very good practice in R as <code>plot()</code> is the base R function for plotting data. But we keep it nonetheless because it is an informative name. The NFI tables in this tutorial are: <code>plot</code>, <code>tree</code> and <code>species_list</code>.</p>
-<p>The prefix <code>exfi_</code> from the tables shown in the oprevious section was added for the data from the first exploration crew forest inventory.</p>
-<p>Similarly all spatial data are handled mostly with the <code>sf</code> package, and the prefix <code>sf_</code> was used as a naming convention. The spatial objects available for this tutorial are as follows: <code>sf_admin</code>, <code>sf_lc</code> and <code>sf_topo</code>, respectively the administrative boundaries, land cover, and topography of <code>Louland</code>.</p>
+<p>All forest inventory-related tables are stored in R objects with names related to their contents. For example the NFI plot and tree data are stored in tables <code>plot</code> and <code>tree</code>, respectively.</p>
+<p>Using <code>plot</code> as a table name is not very good practice in R, as <code>plot()</code> is the base R function for plotting data. However, we still keep it because it is an informative name. The NFI tables in this tutorial are: <code>plot</code>, <code>tree</code> and <code>species_list</code>.</p>
+<p>The prefix <code>exfi_</code>, from the tables shown in the previous section was added for the data from the first exploration crew’s forest inventory.</p>
+<p>Similarly, all spatial data are handled mostly with the <code>sf</code> package, and the prefix, <code>sf_</code>, was used as a naming convention. The spatial objects available for this tutorial are as follows: <code>sf_admin</code>, <code>sf_lc</code> and <code>sf_topo</code>, respectively the administrative boundaries, land cover, and topography of <code>Louland</code>.</p>
 </div>
 <p> </p>
 </div>
 <div id="land-cover-areas" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Land cover areas</h2>
-<p><code>sf</code> objects behave similarly to standard tibbles, making it easy to apply <code>tidyverse</code> functions while keeping the spatial information or to convert them to tibbles with <code>as_tibble()</code>. The <code>sf</code> package also contains the <code>st_area()</code> function that we are going to use to calculate the areas of the land covers.</p>
-<p>In the following sequence we combine the function <code>mutate()</code> used to create or modify columns to our target table with <code>st_area()</code>. Since <code>st_area()</code> takes the whole spatial object as input, we could use <code>st_area(sf_lc)</code> or <code>st_area(.)</code>, which is the standard way to call the current state of a tibble inside a sequence of functions linked with pipes.</p>
+<p><code>sf</code> objects behave similarly to standard tibbles, making it easy to apply <code>tidyverse</code> functions, while keeping the spatial information, or to convert them to tibbles with the function <code>as_tibble()</code>. The <code>sf</code> package also contains the <code>st_area()</code> function that we are going to use to calculate the areas of the land covers.</p>
+<p>In the following sequence, we combine the function <code>mutate()</code>, used to create or modify columns in our target table, with the function <code>st_area()</code>. Since <code>st_area()</code> takes the whole spatial object as input, we could use <code>st_area(sf_lc)</code> or <code>st_area(.)</code>, which is the standard way to call the current state of a tibble inside a sequence of functions linked with pipes.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="land-cover-types-and-areas.html#cb17-1" aria-hidden="true" tabindex="-1"></a>area_lc <span class="ot">&lt;-</span> sf_lc <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="land-cover-types-and-areas.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb17-3"><a href="land-cover-types-and-areas.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_m2 =</span> <span class="fu">st_area</span>(.),</span>

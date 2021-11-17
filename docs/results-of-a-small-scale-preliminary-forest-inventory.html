@@ -142,11 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./index.html"><b>NFI module 9 lesson 1</b></a></li>
+<li><a href="./index.html"><b>NFI eLearning Practice L1</b></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover page</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="objectives.html"><a href="objectives.html"><i class="fa fa-check"></i>Objectives</a></li>
 <li class="chapter" data-level="1" data-path="newland.html"><a href="newland.html"><i class="fa fa-check"></i><b>1</b> A new land has emerged</a></li>
 <li class="chapter" data-level="2" data-path="results-of-a-small-scale-preliminary-forest-inventory.html"><a href="results-of-a-small-scale-preliminary-forest-inventory.html"><i class="fa fa-check"></i><b>2</b> Results of a small scale preliminary forest inventory</a>
 <ul>
@@ -159,6 +159,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="land-cover-types-and-areas.html"><a href="land-cover-types-and-areas.html#land-cover-areas"><i class="fa fa-check"></i><b>3.2</b> Land cover areas</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="divider"></li>
+<li><a href="https://bit.ly/3m5VEsE" target="blank"><b>NFI eLearning modules</b></a></li>
+
 </ul>
 
       </nav>
@@ -178,55 +181,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="results-of-a-small-scale-preliminary-forest-inventory" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Results of a small scale preliminary forest inventory</h1>
-<div class="watermark">
-DRAFT
-</div>
 <div id="overview" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Overview</h2>
-<p>First, let’s have a look at the results of 10 forest plots measured by the exploration crew. The data is stored in the object <code>exfi_agb</code>. By running the object name in the console we will see the results:</p>
+<p>First, let’s have a look at the results of 10 forest plots measured by the exploration crew. The data is stored in the object <code>exfi_agb</code>. By running the object name in the console, we will see the results:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb2-1" aria-hidden="true" tabindex="-1"></a>exfi_agb</span></code></pre></div>
 <pre class="Rout-demo"><code># A tibble: 1 x 8
   n_plot n_tree mean_ba sd_ba mean_agb sd_agb    ci ci_perc
    &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-1     10    525    23.8  19.5     202.   181.  112.      55</code></pre>
+1     10    303    15.0  9.33     130.   111.  68.9      53</code></pre>
 <p> </p>
 <div class="infobox">
-<p>Since we are using functions from the <code>tidyverse</code> collection of R packages, data tables in these interactive lessons are <code>tibbles</code>. They are simple rectangular tables (each column has the same number of rows) plus when running their names in the console, we get the number of rows and columns, the column names with the type of data and the first 10 values for each column.</p>
+<p>Since we are using functions from the <code>tidyverse</code> collection of R packages, data tables in these interactive lessons are <code>tibbles</code>. They are simple rectangular tables (each column has the same number of rows), and when running their names in the console, we are given the number of rows and columns, the column names with the type of data and the first 10 values for each column.</p>
 </div>
 <p> </p>
-<p>The table (or tibble) <code>exfi_agb</code> contains the number of plots <code>n_plot</code>, the mean and standard deviation for aboveground biomass and basal area: <code>mean_agb</code> and <code>sd_agb</code> in ton/ha, <code>mean_ba</code> and <code>sd_ba</code> in m<sup>2</sup>/ha. <code>ci</code> and <code>ci_perc</code> represent the confidence interval around the mean AGB in ton/ha and percentage of the mean respectively.</p>
-<p>The 10 plots come from a random sample in one of the Evergreen Forest of <code>Louland</code>. The crew also shared the plot level aboveground biomass in the table name <code>exfi_pagb</code>.</p>
+<p>The table (or tibble) <code>exfi_agb</code> contains the number of plots <code>n_plot</code>, the mean and standard deviation for aboveground biomass and basal area: <code>mean_agb</code> and <code>sd_agb</code> in ton/ha, <code>mean_ba</code> and <code>sd_ba</code> in m<sup>2</sup>/ha, and <code>ci</code> and <code>ci_perc</code> represent the confidence interval around the mean AGB in ton/ha and percentage of the mean respectively.</p>
+<p>The 10 plots come from a random sample from one of the Evergreen forests of <code>Louland</code>. The crew also shared the plot level aboveground biomass in the table name <code>exfi_pagb</code>.</p>
 <p> </p>
 <div class="infobox">
-<p>Whenever you see “<strong>Your turn!</strong>”, followed by a small console windows, these are actual R consoles. You can run R code in these consoles and you will be presented with either pre-filled code sequences with holes for you to complete or an empty console.</p>
-<p>Follow the instructions and try to complete or create the code necessary to get the table, value or figure requested. The lesson continue after the exercise is completed and the correct code submitted.</p>
-<p>The interactive lessons are designed on a try and error model. The code is first showcased then pre-filled code with holes for you to complete in order to become familiar with the commands. Finally after a few practice exercises the last console for a group of commands will be empty.</p>
+<p>Whenever you see “<strong>Your turn!</strong>”, followed by a small console window, these are actual R consoles. You can run R code in these consoles, and you will be presented with either pre-filled code sequences, with holes for you to complete, or an empty console.</p>
+<p>Follow the instructions and try to complete or create the code necessary to get the table, value or figure requested. The lesson continue after the exercise is completed and the correct code is submitted.</p>
+<p>The interactive lessons are designed on a trial and error model. The code is first showcased then pre-filled code with holes is presented for you to complete in order to become familiar with the commands. Finally, after a few practice exercises, the last console for a group of commands will be empty.</p>
 </div>
 <p> </p>
-<p><strong>Your turn! Run the table name <code>exfi_pagb</code> in the console below to see the table basic information.</strong></p>
+<p><strong>Your turn! Run the table name, <code>exfi_pagb</code>, in the console below to see the table’s basic information.</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r Rchunk-cons"><code class="sourceCode r"><span id="cb4-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Console</span></span>
 <span id="cb4-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb5-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb5-1" aria-hidden="true" tabindex="-1"></a>exfi_pagb</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb5-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Solution</span></span>
+<span id="cb5-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb5-2" aria-hidden="true" tabindex="-1"></a>exfi_pagb</span></code></pre></div>
 <pre class="Rout-sol"><code># A tibble: 10 x 4
    plot_id count_tree plot_ba plot_agb
    &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
- 1 ev-bxj6        256   17.3     146. 
- 2 ev-hnf2       1084   48.0     485. 
- 3 ev-lss4        729   13.9      84.3
- 4 ev-nft9        269   11.6      63.5
- 5 ev-odt9         64    3.10     25.2
- 6 ev-puu2         96   10.1     106. 
- 7 ev-qpp8       1184   31.0     181. 
- 8 ev-scx1        176   34.9     417. 
- 9 ev-ugi1         96    6.42     53.6
-10 ev-vpw3       1296   62.0     463. </code></pre>
-<p>The table <code>exfi_pagb</code> contains for each plot, its ID <code>plot_id</code>, number of trees per hectare <code>count_tree</code>, basal area <code>plot_ba</code> in m<sup>2</sup>/ha and aboveground biomass <code>plot_agb</code> in ton/ha.</p>
+ 1 ev-1mdx        152   33.7     396. 
+ 2 ev-3jwx        729   13.9      84.5
+ 3 ev-3pqc         96   10.1     107. 
+ 4 ev-3viv        402   23.8     180. 
+ 5 ev-4hlp        397   21.0     218. 
+ 6 ev-4uti        269   11.6      61.6
+ 7 ev-ce9o         40    1.92     14.1
+ 8 ev-cn7f        713   18.3     113. 
+ 9 ev-p4uq         96    6.42     53.6
+10 ev-q9xk        136    9.45     71.4</code></pre>
+<p>The table, <code>exfi_pagb</code>, contains the ID <code>plot_id</code>, number of trees per hectare <code>count_tree</code>, basal area <code>plot_ba</code> in m<sup>2</sup>/ha and aboveground biomass <code>plot_agb</code> in ton/ha, for each plot.</p>
 <p> </p>
 </div>
 <div id="recalculate-the-mean-agb" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Recalculate the mean AGB</h2>
-<p>Given that the crew chose the plot location randomly, we can use simple aggregating functions to re-calculate the forest mean aboveground biomass and confirm their calculation. We will use a mix of base R and <code>tidyverse</code> functions, in particular <code>summarise()</code>. This function is very handy to aggregate numerical variables in different columns of our plot table and can even be used in combination to <code>group_by()</code> to summarize numerical variables based on category variables of the same table (more on that later, with the full NFI data).</p>
-<p>Let’s see for example how to calculate the mean basal area of the forest with its standard deviation, and save the results in a table <code>exfi_ba</code>. After creating the table, we run the table name in the console to display its content.</p>
+<p>Given that the crew chose the plot location randomly, we can use simple aggregating functions to re-calculate the forest mean aboveground biomass and confirm their calculations. We will use a mix of base R and <code>tidyverse</code> functions, in particular the function <code>summarise()</code>. This function is very handy to aggregate numerical variables in different columns of our plot table and can even be used in combination with the <code>group_by()</code> function to summarize numerical variables based on category variables of the same table (more on that later, with the full NFI data).</p>
+<p>Let’s see, for example, how to calculate the mean basal area of the forest with its standard deviation and save the results in a table <code>exfi_ba</code>. After creating the table, we run the table name in the console to display its content.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-1" aria-hidden="true" tabindex="-1"></a>exfi_ba <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb7-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ba =</span> <span class="fu">mean</span>(plot_ba),</span>
@@ -237,9 +238,9 @@ DRAFT
 <pre class="Rout-demo"><code># A tibble: 1 x 2
   mean_ba sd_ba
     &lt;dbl&gt; &lt;dbl&gt;
-1    23.8  19.5</code></pre>
+1    15.0  9.33</code></pre>
 <p> </p>
-<p><strong>Your turn! Create a table <code>exfi_agb2</code> with the columns <code>mean_agb</code> and <code>sd_agb</code> then display the results.</strong></p>
+<p><strong>Your turn! Create a table, <code>exfi_agb2</code>, with the columns <code>mean_agb</code> and <code>sd_agb</code> then display the results.</strong></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r Rchunk-cons"><code class="sourceCode r"><span id="cb9-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Console</span></span>
 <span id="cb9-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-2" aria-hidden="true" tabindex="-1"></a>exfi_agb2 <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -248,18 +249,19 @@ DRAFT
 <span id="cb9-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb9-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-8"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb9-8" aria-hidden="true" tabindex="-1"></a>exfi_agb2</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb10-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-1" aria-hidden="true" tabindex="-1"></a>exfi_agb2 <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb10-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_agb =</span> <span class="fu">mean</span>(plot_agb),</span>
-<span id="cb10-4"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_agb   =</span> <span class="fu">sd</span>(plot_agb)</span>
-<span id="cb10-5"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb10-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-7" aria-hidden="true" tabindex="-1"></a>exfi_agb2</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r Rchunk-sol"><code class="sourceCode r"><span id="cb10-1"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Solution</span></span>
+<span id="cb10-2"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-2" aria-hidden="true" tabindex="-1"></a>exfi_agb2 <span class="ot">&lt;-</span> exfi_pagb <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb10-4"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_agb =</span> <span class="fu">mean</span>(plot_agb),</span>
+<span id="cb10-5"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_agb   =</span> <span class="fu">sd</span>(plot_agb)</span>
+<span id="cb10-6"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-7"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="results-of-a-small-scale-preliminary-forest-inventory.html#cb10-8" aria-hidden="true" tabindex="-1"></a>exfi_agb2</span></code></pre></div>
 <pre class="Rout-sol"><code># A tibble: 1 x 2
   mean_agb sd_agb
      &lt;dbl&gt;  &lt;dbl&gt;
-1     202.   181.</code></pre>
-<p>We have successfully found back the same values for AGB: <code>202.4</code> ton/ha on average with a standard deviation of <code>180.67</code>.</p>
+1     130.   111.</code></pre>
+<p>We have successfully found the same values for AGB: <code>129.94</code> ton/ha, on average, with a standard deviation of <code>111.18</code>.</p>
 <p>In the next section we will have an overview of the spatial data on <code>Louland</code>’s land cover classes.</p>
 <p> </p>
 
