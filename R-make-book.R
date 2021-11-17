@@ -17,7 +17,7 @@ fig_path <- "images"
  
 #with_color <- TRUE ## FALSE for black and white, not fully supported yet
 
-with_watermark <- TRUE ## also need to activate in tex_preamble
+with_watermark <- FALSE ## also need to activate in tex_preamble
 
 
 
@@ -47,7 +47,6 @@ bookdown::render_book(
   output_format = "bookdown::gitbook",
   output_dir = paste0("docs")
 )
-
 
 
 ## preview one chapter

@@ -7,7 +7,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./index.html"><b>NFI eLearning Practice L1</b></a></li>
       after: |
-        <li><a href="https://bit.ly/3m5VEsE" target="blank"><b>NFI eLearning modules/b></a></li>
+        <li><a href="https://bit.ly/3m5VEsE" target="blank"><b>NFI eLearning modules</b></a></li>
 #        <li><a href="https://github.com/rstudio/bookdown" target="blank"><i>Published with bookdown</i></a></li>
     search:
       engine: fuse
@@ -15,7 +15,7 @@ bookdown::gitbook:
     download: null
     sharing: no
     info: no
-  #split_by: section+number
+  split_by: chapter+number
 
 bookdown::pdf_document2:
   #highlight: tango
