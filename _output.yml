@@ -15,8 +15,18 @@ bookdown::gitbook:
       engine: fuse
     edit: null
     download: null
-    sharing: no
+    sharing:
+      github: true
+      facebook: false
+      twitter: false
+      linkedin: false
+      weibo: false
+      instapaper: false
+      vk: false
+      whatsapp: false
+      all: false
     info: no
+    favicon: "favicon.ico"
   split_by: chapter+number
 
 bookdown::pdf_document2:

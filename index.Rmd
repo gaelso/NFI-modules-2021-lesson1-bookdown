@@ -1,8 +1,8 @@
 ---
-title: "NFI eLearning Practice Module"
-subtitle: "Lesson 1: Overview of the preliminary data"
+title: "Overview of the preliminary data"
+subtitle: "Lesson 1 of the NFI eLearning Practice Module"
 author: ""
-date: "Handbook with solutions - Version 1.0 - October 2021"
+date: "Handbook with solutions"
 subject: "copyright to be defined"
 keywords: "national forest inventory, biomass, sampling design, statistical sampling, allometric equations, wood density, data analysis"
 documentclass: article
@@ -13,6 +13,9 @@ link-citations: yes
 #bibliography: [bib-jourabbr.bib, bib-trouves.bib, bib-recherch.bib, bib-rstudio.bib, bib-packages.bib]
 site: bookdown::bookdown_site
 biblio-style: bib-faouk.bst
+url: 'https://gaelso.github.io/NFI-modules-2021-lesson1-bookdown'
+github-repo: gaelso/NFI-modules-2021-lesson1-bookdown
+favicon: "images/favicon.ico"
 urlcolor: blue
 citecolor: blue
 linkcolor: RoyalBlue
@@ -68,6 +71,12 @@ It features interactive lessons designed to practice National Forest Inventory (
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
 <br />
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+
+Developed with [bookdown](https://bookdown.org/yihui/bookdown/).
+
+Hosted on [Github pages](https://pages.github.com/).
+
+Document version 1.0, October 2021.
 
 ```
 
